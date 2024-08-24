@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          .container{
+            border:2px solid black;
+            background-color: aquamarine;
+            color:black;
+            padding:10px;
+          }
+          #containerID{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+          }
+    </style>
+    <script>
+    let timeout;
+    function debouncePopulateDiv(){
+        // delay the call to populateDiv untill i have not been called for 100ms
+    clearTimeout(timeout);
+     timeout = setTimeout(()=>{ 
+        populateDiv();
+   },1000)
+     
+    }
+
+      async function populateDiv() {
+        const a=document.getElementById("numberOne").value;
+        const b=document.getElementById("numberTwo").value;
+        const response = await  fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" +b)
+        const ans= await response.text();
+        console.log(ans);
+        document.getElementById("finalSum").innerHTML= ans
+
+      }
+
+
+        
+    </script>
+</head>
+<body>
+
+   <input oninput="debouncePopulateDiv()" id ="numberOne" type="text" placeholder="First Number"><br><br>
+   <input oninput="debouncePopulateDiv()" id="numberTwo"type="text" placeholder="Second Number"><br><br>
+   <!-- <button onclick=populateDiv() type="submit">calculate</button><br><br> --> 
+   <!-- there is no button bcoz i want to take input imideatly whenever anyone hits a input button or write a input -->
+        <!-- and this operation perform by the help of (oninput) -->
+   <div id="finalSum">
+     
+   </div>
+ 
+</body>
+</html>

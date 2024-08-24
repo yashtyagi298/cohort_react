@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          .container{
+            border:2px solid black;
+            background-color: aquamarine;
+            color:black;
+            padding:10px;
+          }
+          #containerID{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+          }
+    </style>
+    <script>
+        // function populateDiv(){
+        //     const a=document.getElementById("numberOne").value;
+        //     const b=document.getElementById("numberTwo").value;
+            //fetch 
+      //  fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" +b)
+      // .then(function(value){
+      //    value.text()
+      //      .then(function(ans){
+      //       document.getElementById("finalSum").innerHTML= ans
+      //       // console.log(ans);
+      //      })
+      // })
+   // }
+      // await syntax 
+
+      async function populateDiv() {
+        const a=document.getElementById("numberOne").value;
+        const b=document.getElementById("numberTwo").value;
+        const response = await  fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" +b)
+        const ans= await response.text();
+        console.log(ans);
+        document.getElementById("finalSum").innerHTML= ans
+
+      }
+
+
+            // const element=document.getElementById("finalSum");
+            // element.innerHTML=parseInt(a)+parseInt(b);
+        
+    </script>
+</head>
+<body>
+   <!-- <div class="container" id="containerID">
+    <h2> Hi There...!</h2>
+   </div>
+   <br>
+   <div class="container">
+    <h2> Hi There...!</h2>
+   </div> -->
+   <input id ="numberOne" type="text" placeholder="First Number"><br><br>
+   <input id="numberTwo"type="text" placeholder="Second Number"><br><br>
+   <button onclick=populateDiv() type="submit">calculate</button><br><br>
+   <div id="finalSum">
+     
+   </div>
+ 
+</body>
+</html>

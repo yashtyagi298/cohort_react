@@ -1,0 +1,48 @@
+ <!-- Counter Button without using a React  -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Button</title>
+ </head>
+ <body>
+    <div id="buttonParent">
+
+    </div>
+    <script>
+        let state={
+            count:0
+        }
+       function  onButtonPress(){
+
+        state.count++;
+        buttonComponentReRender();
+
+
+        }
+
+
+
+        function buttonComponentReRender(){
+            document.getElementById("buttonParent").innerHTML="";
+            const component = buttonComponent(state.count);
+            console.log(component);
+            document.getElementById("buttonParent").appendChild(component);
+        }
+
+        function buttonComponent(count){
+            const button = document.createElement("button");
+            button.innerHTML= `counter ${count}`;
+            button.setAttribute("onclick",`onButtonPress()`);
+            return button;
+        }
+      buttonComponentReRender();
+      
+
+
+
+    </script>
+ </body>
+ </html>

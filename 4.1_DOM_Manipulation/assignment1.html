@@ -1,0 +1,30 @@
+<!-- Interest calculator  -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrest Calculator</title>
+  <script>
+     async function calculation(){
+        const Principal = document.getElementById("principal").value;
+        const rate = document.getElementById("rate").value;
+        const time = document.getElementById("time").value;
+  
+        const response = await fetch("https://sum-server.100xdevs.com/interest?principal=" + Principal + "&rate=" + rate + "&time=" +time);
+        const ans = await response.text();
+        document.getElementById("final-calculation").innerHTML=ans;
+
+
+     }
+  </script>
+ </head>
+ <body>
+    <input id = "principal" type="text" placeholder="Principal"><br><br>
+    <input id ="rate" type="text" placeholder="Rate"><br><br>
+    <input id="time" type="text" placeholder="Time"><br><br>
+    <button onclick=calculation() type="submit">Calculate</button><br><br>
+    <div id="final-calculation"></div>
+
+ </body>
+ </html>
